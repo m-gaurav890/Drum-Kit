@@ -6,13 +6,14 @@ for(var i=0;i<numberOfClicks;i++)
     {
         var buttonInnerHTML=this.innerHTML;
         makeSound(buttonInnerHTML);
-       
+        buttonAnimation(buttonInnerHTML);
     }  );
 }
 
 document.addEventListener("keypress",function(event)
 {
      makeSound(event.key); 
+    buttonAnimation(event.key);
 });
 
 
@@ -50,5 +51,17 @@ function makeSound(key)
             break;
        }
 
+}
+
+
+
+function buttonAnimation(currentKey)
+{
+    var activeButtons=document.querySelector("."+currentKey);
+    activeButtons.classList.add ("pressed");
+    setTimeout(function()
+    {
+        activeButtons.classList.remove("pressed");
+    },90)
 }
 
